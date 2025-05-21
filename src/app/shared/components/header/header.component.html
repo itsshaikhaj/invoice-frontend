@@ -1,0 +1,76 @@
+<!-- Nav Bar Start -->
+<div class="nav">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <a href="#" class="navbar-brand">MENU</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        <div class="navbar-nav mr-auto" *ngIf="isLoggedIn">
+
+        </div>
+        <div class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+          <div class="nav-item">
+            <ng-container>
+              <div class="navbar-nav mr-auto d-flex">
+                <a routerLink="/auth/signin" routerLinkActive="active" class="nav-item nav-link">Login</a>
+                <a routerLink="/auth/signup" routerLinkActive="active" class="nav-item nav-link">Register</a>
+              </div>
+
+            </ng-container>
+
+          </div>
+        </div>
+
+        <div class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+          <a routerLink="/" class="nav-item nav-link active">Home</a>
+          <a routerLink="/my-account" class="nav-item nav-link">My Account</a>
+          <!-- <a href="cart.html" class="nav-item nav-link">Cart</a> -->
+          <div class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Hi, {{ user?.name }}</a>
+            <div class="dropdown-menu">
+              <a (click)="logout()" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<!-- Nav Bar End -->
+
+<!-- Bottom Bar Start -->
+<div class="bottom-bar" *ngIf="isLoggedIn">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-md-3">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/img/Invoice.webp" alt="Logo">
+          </a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <!-- <div class="search">
+          <input type="text" placeholder="Search">
+          <button><i class="fa fa-search"></i></button>
+        </div> -->
+      </div>
+      <!-- <div class="col-md-3">
+        <div class="user">
+          <a routerLink="/wishlist" class="btn wishlist">
+            <i class="fa fa-heart"></i>
+          </a>
+          <a (click)="goToCart()" class="btn cart">
+            <i class="fa fa-shopping-cart"></i>
+          </a>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- Bottom Bar End -->

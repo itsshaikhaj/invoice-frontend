@@ -1,0 +1,156 @@
+<div class="container my-4">
+    <form [formGroup]="invoiceForm" (ngSubmit)="submitInvoice()" novalidate>
+  
+      <div class="row">
+        <!-- Company Info -->
+        <div class="col-md-6 mb-3">
+          <label for="companyName" class="form-label">Company Name</label>
+          <input id="companyName" formControlName="companyName" type="text" class="form-control" 
+                 [ngClass]="{'is-invalid': isSubmitted && invoiceForm.get('companyName')?.invalid}" />
+          <div *ngIf="isSubmitted && invoiceForm.get('companyName')?.invalid" class="invalid-feedback">
+            Company Name is required.
+          </div>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="companyEmail" class="form-label">Company Email</label>
+          <input id="companyEmail" formControlName="companyEmail" type="email" class="form-control" 
+                 [ngClass]="{'is-invalid': isSubmitted && invoiceForm.get('companyEmail')?.invalid}" />
+          <div *ngIf="isSubmitted && invoiceForm.get('companyEmail')?.errors" class="invalid-feedback">
+            <div *ngIf="invoiceForm.get('companyEmail')?.errors?.['required']">Company Email is required.</div>
+            <div *ngIf="invoiceForm.get('companyEmail')?.errors?.['email']">Invalid email format.</div>
+          </div>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="companyPhone" class="form-label">Company Phone</label>
+          <input id="companyPhone" formControlName="companyPhone" type="text" class="form-control"
+                 [ngClass]="{'is-invalid': isSubmitted && invoiceForm.get('companyPhone')?.invalid}" />
+          <div *ngIf="isSubmitted && invoiceForm.get('companyPhone')?.invalid" class="invalid-feedback">
+            Company Phone is required.
+          </div>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="companyAddress" class="form-label">Company Address</label>
+          <textarea id="companyAddress" formControlName="companyAddress" rows="2" class="form-control"
+                    [ngClass]="{'is-invalid': isSubmitted && invoiceForm.get('companyAddress')?.invalid}"></textarea>
+          <div *ngIf="isSubmitted && invoiceForm.get('companyAddress')?.invalid" class="invalid-feedback">
+            Company Address is required.
+          </div>
+        </div>
+      </div>
+  
+      <hr />
+  
+      <!-- Customer Info -->
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="customerName" class="form-label">Customer Name</label>
+          <input id="customerName" formControlName="customerName" type="text" class="form-control" 
+                 [ngClass]="{'is-invalid': isSubmitted && invoiceForm.get('customerName')?.invalid}" />
+          <div *ngIf="isSubmitted && invoiceForm.get('customerName')?.invalid" class="invalid-feedback">
+            Customer Name is required.
+          </div>
+        </div>
+  
+        <div class="col-md-6 mb-3">
+          <label for="customerEmail" class="form-label">Customer Email</label>
+          <input id="customerEmail" formControlName="customerEmail" type="email" class="form-control" 
+                 [ngClass]="{'is-invalid': isSubmitted && invoiceForm.get('customerEmail')?.invalid}" />
+          <div *ngIf="isSubmitted && invoiceForm.get('customerEmail')?.errors" class="invalid-feedback">
+            <div *ngIf="invoiceForm.get('customerEmail')?.errors?.['required']">Customer Email is required.</div>
+            <div *ngIf="invoiceForm.get('customerEmail')?.errors?.['email']">Invalid email format.</div>
+          </div>
+        </div>
+  
+        <div class="col-md-12 mb-3">
+          <label for="customerAddress" class="form-label">Customer Address</label>
+          <textarea id="customerAddress" formControlName="customerAddress" rows="2" class="form-control"
+                    [ngClass]="{'is-invalid': isSubmitted && invoiceForm.get('customerAddress')?.invalid}"></textarea>
+          <div *ngIf="isSubmitted && invoiceForm.get('customerAddress')?.invalid" class="invalid-feedback">
+            Customer Address is required.
+          </div>
+        </div>
+      </div>
+  
+      <hr />
+  
+      <!-- Items -->
+      <div formArrayName="items" class="mb-3">
+        <h5>Items</h5>
+        <div *ngFor="let item of items.controls; let i = index" [formGroupName]="i" class="border rounded p-3 mb-3">
+          <div class="row g-2">
+            <div class="col-md-5">
+              <input formControlName="description" type="text" class="form-control" placeholder="Description"
+                     [ngClass]="{'is-invalid': isSubmitted && item.get('description')?.invalid}" />
+              <div *ngIf="isSubmitted && item.get('description')?.invalid" class="invalid-feedback">
+                Description is required.
+              </div>
+            </div>
+            <div class="col-md-3">
+              <input formControlName="quantity" type="number" class="form-control" placeholder="Quantity" min="1"
+                     [ngClass]="{'is-invalid': isSubmitted && item.get('quantity')?.invalid}" />
+              <div *ngIf="isSubmitted && item.get('quantity')?.invalid" class="invalid-feedback">
+                Quantity must be at least 1.
+              </div>
+            </div>
+            <div class="col-md-3">
+              <input formControlName="price" type="number" class="form-control" placeholder="Price" min="0"
+                     [ngClass]="{'is-invalid': isSubmitted && item.get('price')?.invalid}" />
+              <div *ngIf="isSubmitted && item.get('price')?.invalid" class="invalid-feedback">
+                Price must be non-negative.
+              </div>
+            </div>
+            <div class="col-md-1 d-flex align-items-center">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeItem(i)" [disabled]="items.length === 1">X</button>
+            </div>
+          </div>
+        </div>
+  
+        <button type="button" class="btn btn-success btn-sm" (click)="addItem()">Add Item</button>
+      </div>
+  
+      <hr />
+  
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="dueDate" class="form-label">Due Date</label>
+          <input id="dueDate" formControlName="dueDate" type="date" class="form-control"
+                 [ngClass]="{'is-invalid': isSubmitted && invoiceForm.get('dueDate')?.invalid}" />
+          <div *ngIf="isSubmitted && invoiceForm.get('dueDate')?.invalid" class="invalid-feedback">
+            Due Date is required.
+          </div>
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <label for="status" class="form-label">Status</label>
+          <select id="status" formControlName="status" class="form-select">
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+          </select>
+        </div>
+  
+        <div class="col-md-4 mb-3">
+          <label for="templateId" class="form-label">Invoice Template</label>
+          <select id="templateId" formControlName="templateId" class="form-select">
+            <option value="template1">Template 1</option>
+            <option value="template2">Template 2</option>
+            <option value="template3">Template 3</option>
+          </select>
+        </div>
+      </div>
+  
+      <div class="mb-3">
+        <label for="logo" class="form-label">Upload Logo</label>
+        <input id="logo" type="file" class="form-control" (change)="onLogoUpload($event)" />
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Submit Invoice</button>
+  
+      <div *ngIf="generatedInvoiceNumber" class="mt-3 alert alert-success">
+        Invoice Created! Invoice Number: <strong>{{ generatedInvoiceNumber }}</strong>
+      </div>
+    </form>
+  </div>
+  

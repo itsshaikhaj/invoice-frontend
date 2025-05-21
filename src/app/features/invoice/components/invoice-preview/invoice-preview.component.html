@@ -1,0 +1,43 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div *ngIf="invoice.template === 'template1'">
+                <app-invoice-template1 [invoice]="invoice"></app-invoice-template1>
+            </div>
+
+            <div *ngIf="invoice.template === 'template2'">
+                <app-invoice-template2 [invoice]="invoice"></app-invoice-template2>
+            </div>
+
+            <div *ngIf="invoice.template === 'template3'">
+                <app-invoice-template3 [invoice]="invoice"></app-invoice-template3>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+
+
+<h2 mat-dialog-title>Invoice Preview</h2>
+<mat-dialog-content class="mt-3">
+  <div id="invoicePdf" #invoicePdf style="width: 210mm; min-height: 297mm; padding: 20px; background: white;">
+   
+  
+  <div *ngIf="invoice.templateId === 'template1'">
+    <app-invoice-template1 [invoice]="invoice"></app-invoice-template1>
+  </div>
+
+  <div *ngIf="invoice.templateId === 'template2'">
+    <app-invoice-template2 [invoice]="invoice"></app-invoice-template2>
+  </div>
+
+  <div *ngIf="invoice.templateId === 'template3'">
+    <app-invoice-template3 [invoice]="invoice"></app-invoice-template3>
+  </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Close</button>
+  <button mat-button (click)="downloadAsPDF()">Download PDF</button>
+</mat-dialog-actions>

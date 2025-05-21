@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Invoice - INV-0001</title>
+  <link rel="stylesheet" href="style.css" media="all" />
+</head>
+
+<body>
+  <header class="clearfix">
+    <div id="logo">
+      <img src="/assets/templates/template1/logo.png" alt="Company Logo" />
+    </div>
+    <h1>INVOICE INV-0001</h1>
+    <div id="company" class="clearfix">
+      <div>My Tech Solutions</div>
+      <div>123 Startup Street<br /> New York, NY 10001</div>
+      <div>(123) 456-7890</div>
+      <div><a href="mailto:support@mytech.com">support@mytech.com</a></div>
+    </div>
+    <div id="project">
+      <div id="customerName"><span>CLIENT</span> John Doe</div>
+      <div id="customerAddress"><span>ADDRESS</span> 456 Client Ave, Austin, TX 73301</div>
+      <div id="customerEmail"><span>EMAIL</span> <a href="mailto:john@example.com">john@example.com</a></div>
+      <div><span>DATE</span> May 1, 2025</div>
+      <div><span>DUE DATE</span> May 15, 2025</div>
+      <div><span>STATUS</span> pending</div>
+    </div>
+  </header>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th class="desc">DESCRIPTION</th>
+          <th>PRICE</th>
+          <th>QTY</th>
+          <th>TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="desc">Website UI Design</td>
+          <td class="unit">$50.00</td>
+          <td class="qty">10</td>
+          <td class="total">$500.00</td>
+        </tr>
+        <tr>
+          <td class="desc">Frontend Development</td>
+          <td class="unit">$60.00</td>
+          <td class="qty">15</td>
+          <td class="total">$900.00</td>
+        </tr>
+        <tr>
+          <td class="desc">API Integration</td>
+          <td class="unit">$70.00</td>
+          <td class="qty">5</td>
+          <td class="total">$350.00</td>
+        </tr>
+        <tr>
+          <td colspan="3">SUBTOTAL</td>
+          <td class="total">$1,750.00</td>
+        </tr>
+        <tr>
+          <td colspan="3">PAYABLE</td>
+          <td class="total">$1,750.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="notices">
+      <div>NOTICE:</div>
+      <div class="notice">Please make payment before the due date to avoid service disruption.</div>
+    </div>
+  </main>
+  <footer>
+    Invoice generated automatically on May 1, 2025.
+  </footer>
+</body>
+
+<script>
+  // Inside the iframe template (JavaScript)
+  window.addEventListener('message', function (event) {
+    // Assuming the data comes from the parent (form data)
+    const data = event.data;
+
+    if (data) {
+      document.getElementById('customerName').textContent = data.customerName;
+      document.getElementById('customerEmail').textContent = data.customerEmail;
+      document.getElementById('invoiceNumber').textContent = data.invoiceNumber;
+      // Update other fields similarly...
+    }
+  });
+
+</script>
+
+</html>

@@ -1,0 +1,11 @@
+.container-fluid {
+  // height: 80px;
+}
+
+.user-avatar {
+  width: 30px; /* Adjust the size as needed */
+  height: 30px; /* Maintain the aspect ratio */
+  border-radius: 50%; /* Make it circular */
+  margin-right: 5px; /* Space between the avatar and the name */
+  vertical-align: middle; /* Center align with text */
+}

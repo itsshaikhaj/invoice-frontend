@@ -1,0 +1,43 @@
+<div class="container mt-5">
+    <h2 class="mb-4">All Invoices</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th>
+            <th>Invoice No</th>
+            <th>Customer</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let invoice of invoices; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ invoice.invoiceNumber }}</td>
+            <td>{{ invoice.customerName }}</td>
+            <td>{{ invoice.customerEmail }}</td>
+            <td>{{ invoice.createdAt | date: 'dd/MM/yyyy' }}</td>
+            <td>
+              <span class="badge" [ngClass]="{
+                'bg-success': invoice.status === 'paid',
+                'bg-warning': invoice.status === 'pending'
+              }">
+                {{ invoice.status | titlecase }}
+              </span>
+            </td>
+            <td>₹ {{ invoice.totalAmount }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary me-1" (click)="openDialog(invoice)">Preview</button>
+              <button class="btn btn-sm btn-success me-1" (click)="downloadInvoice(invoice)">Download</button>
+              <button class="btn btn-sm btn-danger" (click)="deleteInvoice(invoice._id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

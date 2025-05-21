@@ -1,0 +1,54 @@
+
+    <main>
+      <h1  class="clearfix"><small><span>DATE</span><br />{{invoice.createdAt | date:'dd/MM/yyyy'}}</small> INVOICE {{invoice.invoiceNumber}} <small><span>DUE DATE</span><br /> {{invoice.dueDate | date:'dd/MM/yyyy'}}</small></h1>
+      <table>
+        <thead>
+          <tr>
+            <th class="service">SERVICE</th>
+            <th class="desc">DESCRIPTION</th>
+            <th>PRICE</th>
+            <th>QTY</th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of invoice.items">
+            <td class="service">{{item.description}}</td>
+            <td class="desc">{{item.description}}</td>
+            <td class="unit">{{item.price}}</td>
+            <td class="qty">{{item.quantity}}</td>
+            <td class="total">{{item.price * item.quantity}}</td>
+          </tr>
+          
+          <tr>
+            <td colspan="4" class="sub">SUBTOTAL</td>
+            <td class="sub total">{{invoice.totalAmount}}</td>
+          </tr>
+          
+          <tr>
+            <td colspan="4" class="grand total">GRAND TOTAL</td>
+            <td class="grand total">{{invoice.totalAmount}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="details" class="clearfix">
+        <div id="project">
+          <div class="arrow"><div class="inner-arrow"><span>CLIENT</span> {{invoice.customerName}}</div></div>
+          <div class="arrow"><div class="inner-arrow"><span>ADDRESS</span> {{invoice.customerAddress}}</div></div>
+          <div class="arrow"><div class="inner-arrow"><span>EMAIL</span> <a href="mailto:{{invoice.customerEmail}}">{{invoice.customerEmail}}</a></div></div>
+        </div>
+        <div id="company">
+          <div class="arrow back"><div class="inner-arrow">{{invoice.companyName}} <span>COMPANY</span></div></div>
+          <div class="arrow back"><div class="inner-arrow">{{invoice.companyAddress}} <span>ADDRESS</span></div></div>
+          <div class="arrow back"><div class="inner-arrow">{{invoice.companyPhone}} <span>PHONE</span></div></div>
+          <div class="arrow back"><div class="inner-arrow"><a href="mailto:{{invoice.companyEmail}}">{{invoice.companyEmail}}</a> <span>EMAIL</span></div></div>
+        </div>
+      </div>
+      <div id="notices">
+        <div>NOTICE:</div>
+        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div>
+    </main>
+    <footer>
+      Invoice was created on a computer and is valid without the signature and seal.
+    </footer>

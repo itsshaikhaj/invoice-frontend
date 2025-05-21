@@ -1,0 +1,64 @@
+<!-- Login Start -->
+<div class="login">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6">
+        <div class="login-form">
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="row">
+              <div class="col-md-6">
+                <label for="username">E-mail / Username</label>
+                <input formControlName="email" id="email" class="form-control" type="text"
+                  placeholder="E-mail / Username"
+                  [ngClass]="{ 'is-invalid': isSubmitted && loginForm.get('email')?.invalid }" />
+                <!-- Error messages -->
+                <div *ngIf="isSubmitted && loginForm.get('email')?.errors" class="text-danger">
+                  <small *ngIf="loginForm.get('email')?.errors?.['required']">Username is required.</small>
+                  <small *ngIf="loginForm.get('email')?.errors?.['minlength']">
+                    Username must be at least 3 characters long.
+                  </small>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="password">Password</label>
+                <input formControlName="password" id="password" class="form-control" type="password"
+                  placeholder="Password"
+                  [ngClass]="{ 'is-invalid': isSubmitted && loginForm.get('password')?.invalid }" />
+                <!-- Error messages -->
+                <div *ngIf="isSubmitted && loginForm.get('password')?.errors" class="text-danger">
+                  <small *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</small>
+                  <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                    Password must be at least 6 characters long.
+                  </small>
+                </div>
+              </div>
+
+              <!-- <div class="col-md-12">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="keepMeSignedIn"
+                    formControlName="keepMeSignedIn" />
+                  <label class="custom-control-label" for="keepMeSignedIn">Keep me signed in</label>
+                </div>
+              </div> -->
+
+              <div class="col-md-12 mt-3">
+                <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Submit</button>
+              </div>
+
+              <div class="col-md-12">
+                <p class="text-center">
+                  Don't have an account?
+                  <a routerLink="/signup" class="link-primary">Sign up here</a>
+                </p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-3"></div>
+    </div>
+  </div>
+</div>
+<!-- Login End -->

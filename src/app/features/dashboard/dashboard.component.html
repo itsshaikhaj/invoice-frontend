@@ -1,0 +1,18 @@
+<!-- <div class="invoice-preview-grid">
+  <div class="invoice-frame" *ngFor="let invoice of invoiceTemplates">
+    <iframe [src]="invoice.previewUrl | safeUrl" class="invoice-iframe" frameborder="0"></iframe>
+  </div>
+</div> -->
+
+<div class="invoice-preview-grid">
+  <div class="invoice-frame" *ngFor="let invoice of invoiceTemplates">
+    <iframe [src]="invoice.previewUrl | safeUrl" class="invoice-iframe" frameborder="0"></iframe>
+
+    <!-- Overlay content -->
+    <div class="template-details">
+      <h5>{{ invoice.name }}</h5>
+      <button class="select-btn" (click)="selectTemplate(invoice)">Use Template</button>
+    </div>
+  </div>
+</div>
+

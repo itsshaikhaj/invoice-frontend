@@ -1,0 +1,65 @@
+<div class="tab-pane " id="account-tab" role="tabpanel" aria-labelledby="account-nav">
+  <h4>Account Details</h4>
+  <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+    <div class="row">
+      <!-- First Name -->
+      <div class="col-md-6">
+        <input class="form-control" formControlName="firstName" type="text" placeholder="First Name" />
+        <div *ngIf="f['firstName'].touched && f['firstName'].invalid" class="text-danger">
+          <small *ngIf="f['firstName'].errors?.['required']">First Name is required.</small>
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="col-md-6">
+        <input class="form-control" formControlName="lastName" type="text" placeholder="Last Name" />
+        <div *ngIf="f['lastName'].touched && f['lastName'].invalid" class="text-danger">
+          <small *ngIf="f['lastName'].errors?.['required']">Last Name is required.</small>
+        </div>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="col-md-6">
+        <input class="form-control" formControlName="phoneNumber" type="text" placeholder="Mobile" />
+        <div *ngIf="f['phoneNumber'].touched && f['phoneNumber'].invalid" class="text-danger">
+          <small *ngIf="f['phoneNumber'].errors?.['required']">Mobile number is required.</small>
+          <small *ngIf="f['phoneNumber'].errors?.['pattern']">Mobile number must be 10 digits.</small>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="col-md-6">
+        <input class="form-control" formControlName="email" type="text" placeholder="Email" />
+        <div *ngIf="f['email'].touched && f['email'].invalid" class="text-danger">
+          <small *ngIf="f['email'].errors?.['required']">Email is required.</small>
+          <small *ngIf="f['email'].errors?.['email']">Enter a valid email.</small>
+        </div>
+      </div>
+
+      <!-- Update Button -->
+      <div class="col-md-12">
+        <button class="btn" type="submit" [disabled]="profileForm.invalid">Update Account</button>
+        <br /><br />
+      </div>
+    </div>
+  </form>
+
+  <!-- Loading spinner -->
+  <div *ngIf="isLoading">Loading profile...</div>
+
+  <!-- <h4>Password change</h4>
+  <div class="row">
+    <div class="col-md-12">
+      <input class="form-control" type="password" placeholder="Current Password">
+    </div>
+    <div class="col-md-6">
+      <input class="form-control" type="text" placeholder="New Password">
+    </div>
+    <div class="col-md-6">
+      <input class="form-control" type="text" placeholder="Confirm Password">
+    </div>
+    <div class="col-md-12">
+      <button class="btn">Save Changes</button>
+    </div>
+  </div> -->
+</div>

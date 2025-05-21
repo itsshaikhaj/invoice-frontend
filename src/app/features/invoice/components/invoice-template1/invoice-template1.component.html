@@ -1,0 +1,59 @@
+<div class="container p-5 m-5">
+    <header class="clearfix">
+        <div id="logo">
+            <img [src]="invoice?.logo" alt="Company Logo" />
+        </div>
+        <h1>{{invoice.invoiceNumber}}</h1>
+        <div id="company" class="clearfix">
+            <div>{{invoice.companyName}}</div>
+            <div>{{invoice.companyAddress}}</div>
+            <div>{{invoice.companyPhone}}</div>
+            <div><a href="mailto:{{invoice.companyEmail}}">{{invoice.companyEmail}}</a></div>
+        </div>
+        <div id="project">
+            <div id="customerName"><span>CLIENT</span> {{invoice.customerName}}</div>
+            <div id="customerAddress"><span>ADDRESS</span> {{invoice.customerAddress}}</div>
+            <div id="customerEmail"><span>EMAIL</span> <a
+                    href="mailto:{{invoice.customerEmail}}">{{invoice.customerEmail}}</a></div>
+            <div><span>DATE</span> {{invoice.createdAt | date:'dd/MM/yyyy'}}</div>
+            <div><span>DUE DATE</span> {{invoice.dueDate | date:'dd/MM/yyyy'}}</div>
+            <div><span>STATUS</span> {{invoice.status}}</div>
+        </div>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th class="desc">DESCRIPTION</th>
+                    <th>PRICE</th>
+                    <th>QTY</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of invoice.items">
+                    <td class="desc">{{item.description}}</td>
+                    <td class="unit">{{item.price}}</td>
+                    <td class="qty">{{item.quantity}}</td>
+                    <td class="total">{{item.price * item.quantity}}</td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">SUBTOTAL</td>
+                    <td class="total">{{invoice.totalAmount}}</td>
+                </tr>
+                <tr>
+                    <td colspan="3">PAYABLE</td>
+                    <td class="total">{{invoice.payableAmount}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="notices">
+            <div>NOTICE:</div>
+            <div class="notice">Please make payment before the due date to avoid service disruption.</div>
+        </div>
+    </main>
+    <footer>
+        Invoice generated automatically on {{invoice.createdAt | date:'dd/MM/yyyy'}}.
+    </footer>
+</div>
