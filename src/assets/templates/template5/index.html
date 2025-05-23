@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Invoice INV-0002</title>
+    <link rel="stylesheet" href="styles.css" media="all" />
+
+    <style>
+        @font-face {
+            font-family: SourceSansPro;
+            src: url(SourceSansPro-Regular.ttf);
+        }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        a {
+            color: #2C3E50;
+            text-decoration: none;
+        }
+
+        body {
+            position: relative;
+            width: 21cm;
+            height: 29.7cm;
+            margin: 0 auto;
+            color: #2A2A2A;
+            background: #FAF9F6;
+            font-family: 'SourceSansPro', Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        header {
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        #logo {
+            float: left;
+            margin-top: 8px;
+        }
+
+        #logo img {
+            height: 70px;
+        }
+
+        #company {
+            float: right;
+            text-align: right;
+        }
+
+        #details {
+            margin-bottom: 50px;
+        }
+
+        #client {
+            padding-left: 6px;
+            border-left: 6px solid #D4AF37;
+            float: left;
+        }
+
+        #client .to {
+            color: #777777;
+        }
+
+        h2.name {
+            font-size: 1.4em;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        #invoice {
+            float: right;
+            text-align: right;
+        }
+
+        #invoice h1 {
+            color: #2C3E50;
+            font-size: 2.4em;
+            line-height: 1em;
+            font-weight: normal;
+            margin: 0 0 10px 0;
+        }
+
+        #invoice .date {
+            font-size: 1.1em;
+            color: #777777;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            margin-bottom: 20px;
+        }
+
+        table th,
+        table td {
+            padding: 20px;
+            background: #F1EDE5;
+            text-align: center;
+            border-bottom: 1px solid #FFFFFF;
+        }
+
+        table th {
+            white-space: nowrap;
+            font-weight: normal;
+            background: #2C3E50;
+            color: #FFFFFF;
+        }
+
+        table td {
+            text-align: right;
+        }
+
+        table td h3 {
+            color: #D4AF37;
+            font-size: 1.2em;
+            font-weight: normal;
+            margin: 0 0 0.2em 0;
+        }
+
+        table .no {
+            color: #FFFFFF;
+            font-size: 1.6em;
+            background: #D4AF37;
+        }
+
+        table .desc {
+            text-align: left;
+        }
+
+        table .unit {
+            background: #F5F2E8;
+        }
+
+        table .total {
+            background: #2C3E50;
+            color: #FFFFFF;
+        }
+
+        table td.unit,
+        table td.qty,
+        table td.total {
+            font-size: 1.2em;
+        }
+
+        table th.unit {
+            background: #2C3E50;
+            /* Navy */
+            color: #FFFFFF;
+        }
+
+
+        table tbody tr:last-child td {
+            border: none;
+        }
+
+        table tfoot td {
+            padding: 10px 20px;
+            background: #FAF9F6;
+            border-bottom: none;
+            font-size: 1.2em;
+            white-space: nowrap;
+            border-top: 1px solid #D4AF37;
+        }
+
+        table tfoot tr:first-child td {
+            border-top: none;
+        }
+
+        table tfoot tr:last-child td {
+            color: #2C3E50;
+            font-size: 1.4em;
+            border-top: 2px solid #D4AF37;
+        }
+
+        table tfoot tr td:first-child {
+            border: none;
+        }
+
+        #thanks {
+            font-size: 2em;
+            margin-bottom: 50px;
+            color: #2C3E50;
+        }
+
+        #notices {
+            padding-left: 6px;
+            border-left: 6px solid #D4AF37;
+        }
+
+        #notices .notice {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        footer {
+            color: #777777;
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            bottom: 0;
+            border-top: 1px solid #D4AF37;
+            padding: 8px 0;
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <header class="clearfix">
+        <div id="logo">
+            <img src="/assets/templates/template2/logo.png" alt="Company Logo" />
+        </div>
+        <div id="company">
+            <h2 class="name">My Tech Solutions</h2>
+            <div>123 Startup Street, New York, NY 10001</div>
+            <div>(123) 456-7890</div>
+            <div><a href="mailto:support@mytech.com">support@mytech.com</a></div>
+        </div>
+    </header>
+
+    <main>
+        <div id="details" class="clearfix">
+            <div id="client">
+                <div class="to">INVOICE TO:</div>
+                <h2 class="name">John Doe</h2>
+                <div class="address">456 Client Ave, Austin, TX 73301</div>
+                <div class="email"><a href="mailto:john@example.com">john@example.com</a></div>
+            </div>
+            <div id="invoice">
+                <h1>INVOICE INV-0002</h1>
+                <div class="date">Date of Invoice: May 1, 2025</div>
+                <div class="date">Due Date: May 15, 2025</div>
+                <div class="date">Status: pending</div>
+            </div>
+        </div>
+
+        <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th class="no">#</th>
+                    <th class="desc">DESCRIPTION</th>
+                    <th class="unit">UNIT PRICE</th>
+                    <th class="qty">QUANTITY</th>
+                    <th class="total">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="no">01</td>
+                    <td class="desc">
+                        <h3>Website UI Design</h3>Designing a modern, responsive UI.
+                    </td>
+                    <td class="unit">$50.00</td>
+                    <td class="qty">10</td>
+                    <td class="total">$500.00</td>
+                </tr>
+                <tr>
+                    <td class="no">02</td>
+                    <td class="desc">
+                        <h3>Frontend Development</h3>Building pages using React.
+                    </td>
+                    <td class="unit">$60.00</td>
+                    <td class="qty">15</td>
+                    <td class="total">$900.00</td>
+                </tr>
+                <tr>
+                    <td class="no">03</td>
+                    <td class="desc">
+                        <h3>API Integration</h3>Connecting frontend with backend services.
+                    </td>
+                    <td class="unit">$70.00</td>
+                    <td class="qty">5</td>
+                    <td class="total">$350.00</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">SUBTOTAL</td>
+                    <td>$1,750.00</td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">PAYABLE AMOUNT</td>
+                    <td>$1,750.00</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div id="thanks">Thank you!</div>
+
+        <div id="notices">
+            <div>NOTICE:</div>
+            <div class="notice">
+                Please make payment before the due date to avoid service disruption.
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Invoice generated automatically on May 1, 2025.
+    </footer>
+</body>
+
+
+
+</html>

@@ -4,28 +4,28 @@
     <div class="row">
       <!-- First Name -->
       <div class="col-md-6">
-        <input class="form-control" formControlName="firstName" type="text" placeholder="First Name" />
-        <div *ngIf="f['firstName'].touched && f['firstName'].invalid" class="text-danger">
-          <small *ngIf="f['firstName'].errors?.['required']">First Name is required.</small>
+        <input class="form-control" formControlName="name" type="text" placeholder="First Name" />
+        <div *ngIf="f['name'].touched && f['name'].invalid" class="text-danger">
+          <small *ngIf="f['name'].errors?.['required']">Name is required.</small>
         </div>
       </div>
 
       <!-- Last Name -->
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
         <input class="form-control" formControlName="lastName" type="text" placeholder="Last Name" />
         <div *ngIf="f['lastName'].touched && f['lastName'].invalid" class="text-danger">
           <small *ngIf="f['lastName'].errors?.['required']">Last Name is required.</small>
         </div>
-      </div>
+      </div> -->
 
       <!-- Phone Number -->
-      <div class="col-md-6">
+      <!-- <div class="col-md-6">
         <input class="form-control" formControlName="phoneNumber" type="text" placeholder="Mobile" />
         <div *ngIf="f['phoneNumber'].touched && f['phoneNumber'].invalid" class="text-danger">
           <small *ngIf="f['phoneNumber'].errors?.['required']">Mobile number is required.</small>
           <small *ngIf="f['phoneNumber'].errors?.['pattern']">Mobile number must be 10 digits.</small>
         </div>
-      </div>
+      </div> -->
 
       <!-- Email -->
       <div class="col-md-6">

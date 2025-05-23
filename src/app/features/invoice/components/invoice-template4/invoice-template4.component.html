@@ -1,0 +1,73 @@
+<div id="invoice-wrap">
+    <header class="clearfix">
+        <div id="logo">
+            <img src="/assets/templates/template1/logo.png" alt="Company Logo" />
+        </div>
+        <div id="company">
+            <h2 class="name">{{invoice.companyName}}</h2>
+            <div>{{invoice.companyAddress}}</div>
+            <div>{{invoice.companyPhone}}</div>
+            <div><a href="mailto:{{invoice.companyEmail}}">{{invoice.companyEmail}}</a></div>
+        </div>
+    </header>
+
+    <main>
+        <div id="details" class="clearfix">
+            <div id="client">
+                <div class="to">INVOICE TO:</div>
+                <h2 class="name">{{invoice.customerName}}</h2>
+                <div class="address">{{invoice.customerAddress}}</div>
+                <div class="email"><a href="mailto:{{invoice.customerEmail}}">{{invoice.customerEmail}}</a></div>
+            </div>
+            <div id="invoice">
+                <h2>{{invoice.invoiceNumber}}</h2>
+                <div class="date">Date of Invoice: {{invoice.createdAt | date:'dd/MM/yyyy'}}</div>
+                <div class="date">Due Date: {{invoice.dueDate | date:'dd/MM/yyyy'}}</div>
+                <div class="date">Status: {{invoice.status}}</div>
+            </div>
+        </div>
+
+        <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th class="no">#</th>
+                    <th class="desc">DESCRIPTION</th>
+                    <th class="unit">UNIT PRICE</th>
+                    <th class="qty">QUANTITY</th>
+                    <th class="total">TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of invoice.items; let i = index">
+                    <td class="no">{{i + 1}}</td>
+                    <td class="desc">
+                        <h3>{{item.description}}</h3>
+                    </td>
+                    <td class="unit">₹{{item.price | number:'1.2-2'}}</td>
+                    <td class="qty">{{item.quantity}}</td>
+                    <td class="total">₹{{item.price * item.quantity | number:'1.2-2'}}</td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">SUBTOTAL</td>
+                    <td>₹{{invoice.totalAmount | number:'1.2-2'}}</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">PAYABLE AMOUNT</td>
+                    <td>₹{{invoice.payableAmount | number:'1.2-2'}}</td>
+                </tr>
+            </tfoot>
+        </table>
+
+
+    </main>
+
+    <footer>
+        Invoice generated automatically on {{invoice.createdAt | date:'dd/MM/yyyy'}}. All rights reserved.
+    </footer>
+</div>

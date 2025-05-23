@@ -35,7 +35,7 @@ export class InvoicePreviewComponent {
       margin: [0.2, 0.3, 0.2, 0.3],
       filename: `invoice_${this.invoice.invoiceNumber}.pdf`,
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, scrollY: 0, windowWidth: 1200 },
+      html2canvas: { scale: 5, scrollY: 0, windowWidth: 1200 },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       pagebreak: { mode: ['avoid-all', 'css'] }
     };

@@ -1,0 +1,177 @@
+/* Clearfix stays the same */
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Link color update */
+a {
+    color: #16a085;
+    /* muted teal */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body {
+    position: relative;
+    width: 21cm;
+    height: 29.7cm;
+    margin: 0 auto;
+    color: #2c3e50;
+    /* midnight blue */
+    background: #f8f9fa;
+    /* very light gray */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+}
+
+header {
+    padding: 15px 0;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #16a085;
+}
+
+#logo {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#logo img {
+    width: 100px;
+    filter: drop-shadow(0 0 2px #16a085aa);
+}
+
+h1 {
+    border-top: 2px solid #16a085;
+    border-bottom: 2px solid #16a085;
+    color: #16a085;
+    font-size: 2.8em;
+    line-height: 1.4em;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 25px 0;
+    background: none;
+}
+
+#project {
+    float: left;
+}
+
+#project span {
+    color: #16a085;
+    text-align: right;
+    width: 60px;
+    margin-right: 12px;
+    display: inline-block;
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+#company {
+    float: right;
+    text-align: right;
+    color: #34495e;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+#project div,
+#company div {
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+table tr:nth-child(2n-1) td {
+    background: #eaf2f1;
+    /* subtle teal background for zebra stripes */
+}
+
+table th,
+table td {
+    text-align: center;
+}
+
+table th {
+    padding: 12px 25px;
+    color: #fff;
+    background-color: #16a085;
+    /* teal header */
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: none;
+    white-space: nowrap;
+}
+
+table th.desc {
+    text-align: left;
+}
+
+table td {
+    padding: 18px 20px;
+    text-align: right;
+    color: #2c3e50;
+    font-weight: 500;
+    font-size: 1.05em;
+}
+
+table td.desc {
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+table td.unit,
+table td.qty,
+table td.total {
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+table td.grand {
+    border-top: 2px solid #16a085;
+    font-weight: 700;
+    font-size: 1.2em;
+    color: #16a085;
+}
+
+#notices .notice {
+    color: #34495e;
+    font-size: 1.2em;
+    font-weight: 600;
+    background: #d1f2eb;
+    padding: 10px 15px;
+    border-left: 6px solid #16a085;
+    border-radius: 3px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+footer {
+    color: #7f8c8d;
+    width: 100%;
+    height: 35px;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #bdc3c7;
+    padding: 10px 0;
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9em;
+    letter-spacing: 0.04em;
+}

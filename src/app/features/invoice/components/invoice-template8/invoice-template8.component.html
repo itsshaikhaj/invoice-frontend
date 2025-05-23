@@ -1,0 +1,70 @@
+<div class="invoice-container">
+    <header>
+        <div id="logo">
+            <img id="logo" src="/assets/templates/template1/logo.png" alt="Company Logo" />
+        </div>
+        <h1>{{invoice.invoiceNumber}}</h1>
+    </header>
+
+    <div class="company-info">
+        <div>
+            <div><strong>{{invoice.companyName}}</strong></div>
+            <div>{{invoice.companyAddress}}</div>
+            <div>{{invoice.companyPhone}}</div>
+            <div><a href="mailto:{{invoice.companyEmail}}" style="color: white;">{{invoice.companyEmail}}</a></div>
+        </div>
+        <div>
+            <div><strong>Invoice Date:</strong> {{invoice.createdAt | date:'dd/MM/yyyy'}}</div>
+            <div><strong>Due Date:</strong> {{invoice.dueDate | date:'dd/MM/yyyy'}}</div>
+            <div><strong>Status:</strong> {{invoice.status}}</div>
+        </div>
+    </div>
+
+    <div class="client-info">
+        <div><strong>Client:</strong> {{invoice.customerName}}</div>
+        <div><strong>Address:</strong> {{invoice.customerAddress}}</div>
+        <div><strong>Email:</strong> <a href="mailto:{{invoice.customerEmail}}"
+                style="color: #185a9d;">{{invoice.customerEmail}}</a>
+        </div>
+    </div>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th class="desc">DESCRIPTION</th>
+                    <th>PRICE</th>
+                    <th>QTY</th>
+                    <th>TOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of invoice.items">
+                    <td class="desc">{{item.description}}</td>
+                    <td>₹{{item.price | number:'1.2-2'}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>₹{{item.price * item.quantity | number:'1.2-2'}}</td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">SUBTOTAL</td>
+                    <td>₹{{invoice.totalAmount | number:'1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td colspan="3">PAYABLE AMOUNT</td>
+                    <td>₹{{invoice.totalAmount | number:'1.2-2'}}</td>
+                </tr>
+            </tfoot>
+        </table>
+    </main>
+
+    <div id="notices">
+        Please make payment before the due date to avoid service disruption.
+    </div>
+
+    <footer>
+        Invoice generated automatically on {{invoice.createdAt | date:'dd/MM/yyyy'}}.
+    </footer>
+</div>

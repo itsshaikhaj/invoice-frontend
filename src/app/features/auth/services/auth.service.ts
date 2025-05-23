@@ -11,7 +11,7 @@ export class AuthService {
   private baseUrl = 'http://localhost:5000/api/auth';  // Replace with your backend URL
   // BehaviorSubject to store user data and authentication state
   private currentUserSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   constructor(private http: HttpClient) {
 
     const savedUser = localStorage.getItem('user');
@@ -19,7 +19,7 @@ export class AuthService {
 
     // Initialize the BehaviorSubject with the stored user data or null if no user is found
     this.currentUserSubject = new BehaviorSubject<any>(initialUser);
-    this.isLoggedInSubject = new BehaviorSubject<boolean>(!!initialUser);
+    // this.isLoggedInSubject = new BehaviorSubject<boolean>(!!initialUser);
 
   }
 
@@ -38,6 +38,14 @@ export class AuthService {
 
   signup(payload: { name: string; email: string; password: string }): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, payload);
+  }
+
+  getUserProfile(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/me`);
+  }
+
+  updateUserProfile(data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/me`, data);
   }
 
 

@@ -21,6 +21,7 @@ export class HeaderComponent {
   ) {
     // Subscribe to login status observable
     this.authService.getIsLoggedIn().subscribe(status => {
+      console.log('status :', status);
       this.isLoggedIn = status;
     });
 

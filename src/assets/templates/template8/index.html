@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Invoice - INV-0001</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 30px;
+            color: #333;
+        }
+
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 40px 50px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0, 242, 254, 0.3);
+        }
+
+        header img {
+            width: 100px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+        }
+
+        header h1 {
+            font-weight: 600;
+            font-size: 2.8rem;
+            letter-spacing: 0.1em;
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-info,
+        .client-info {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px 50px;
+            border-bottom: 1px solid #e6e9ed;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .company-info div,
+        .client-info div {
+            flex: 1;
+        }
+
+        .client-info {
+            background: #f9fbfc;
+            color: #444;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+
+        table thead {
+            background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+            color: white;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        table th,
+        table td {
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th.desc,
+        table td.desc {
+            text-align: left;
+        }
+
+        table tbody tr:nth-child(even) {
+            background: #f5f9fa;
+        }
+
+        table tfoot td {
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-top: 2px solid #185a9d;
+        }
+
+        table tfoot td[colspan="3"] {
+            text-align: right;
+            color: #185a9d;
+            font-weight: 600;
+        }
+
+        #notices {
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            color: #5a3e00;
+            font-weight: 700;
+            border-radius: 0 0 16px 16px;
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.3);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        footer {
+            padding: 20px 50px;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #999;
+            background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+            border-radius: 0 0 16px 16px;
+            font-weight: 600;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+
+            .company-info,
+            .client-info,
+            main {
+                padding: 20px;
+            }
+
+            header {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invoice-container">
+        <header>
+            <img src="/assets/templates/template1/logo.png" alt="Company Logo" />
+            <h1>INVOICE INV-0001</h1>
+        </header>
+
+        <div class="company-info">
+            <div>
+                <div><strong>My Tech Solutions</strong></div>
+                <div>123 Startup Street</div>
+                <div>New York, NY 10001</div>
+                <div>(123) 456-7890</div>
+                <div><a href="mailto:support@mytech.com" style="color: white;">support@mytech.com</a></div>
+            </div>
+            <div>
+                <div><strong>Invoice Date:</strong> May 1, 2025</div>
+                <div><strong>Due Date:</strong> May 15, 2025</div>
+                <div><strong>Status:</strong> Pending</div>
+            </div>
+        </div>
+
+        <div class="client-info">
+            <div><strong>Client:</strong> John Doe</div>
+            <div><strong>Address:</strong> 456 Client Ave, Austin, TX 73301</div>
+            <div><strong>Email:</strong> <a href="mailto:john@example.com" style="color: #185a9d;">john@example.com</a>
+            </div>
+        </div>
+
+        <main>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="desc">DESCRIPTION</th>
+                        <th>PRICE</th>
+                        <th>QTY</th>
+                        <th>TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="desc">Website UI Design</td>
+                        <td>$50.00</td>
+                        <td>10</td>
+                        <td>$500.00</td>
+                    </tr>
+                    <tr>
+                        <td class="desc">Frontend Development</td>
+                        <td>$60.00</td>
+                        <td>15</td>
+                        <td>$900.00</td>
+                    </tr>
+                    <tr>
+                        <td class="desc">API Integration</td>
+                        <td>$70.00</td>
+                        <td>5</td>
+                        <td>$350.00</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">SUBTOTAL</td>
+                        <td>$1,750.00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">PAYABLE AMOUNT</td>
+                        <td>$1,750.00</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </main>
+
+        <div id="notices">
+            Please make payment before the due date to avoid service disruption.
+        </div>
+
+        <footer>
+            Invoice generated automatically on May 1, 2025.
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 <div class="container p-5 m-5">
     <header class="clearfix">
         <div id="logo">
-            <img [src]="invoice?.logo" alt="Company Logo" />
+            <img [src]="invoice?.logo || '/assets/templates/template1/logo.png'" alt="Company Logo" />
         </div>
         <h1>{{invoice.invoiceNumber}}</h1>
         <div id="company" class="clearfix">
@@ -33,18 +33,18 @@
             <tbody>
                 <tr *ngFor="let item of invoice.items">
                     <td class="desc">{{item.description}}</td>
-                    <td class="unit">{{item.price}}</td>
+                    <td class="unit">₹{{item.price | number:'1.2-2'}}</td>
                     <td class="qty">{{item.quantity}}</td>
-                    <td class="total">{{item.price * item.quantity}}</td>
+                    <td class="total">₹{{item.price * item.quantity | number:'1.2-2'}}</td>
                 </tr>
 
                 <tr>
                     <td colspan="3">SUBTOTAL</td>
-                    <td class="total">{{invoice.totalAmount}}</td>
+                    <td class="total">₹{{invoice.totalAmount | number:'1.2-2'}}</td>
                 </tr>
                 <tr>
                     <td colspan="3">PAYABLE</td>
-                    <td class="total">{{invoice.payableAmount}}</td>
+                    <td class="total">₹{{invoice.payableAmount | number:'1.2-2'}}</td>
                 </tr>
             </tbody>
         </table>

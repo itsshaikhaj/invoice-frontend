@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+  
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f8f9fa; /* Lighter background */
+  color: #343a40; /* Darker text for better contrast */
+  line-height: 1.6;
+}
+
+/* Basic Invoice Styles */
+#invoice-wrap {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08); /* Stronger shadow */
+  max-width: 950px; /* Slightly wider */
+  margin: 30px auto;
+  overflow: hidden; /* Clear floats */
+}
+
+header {
+  padding: 25px 0;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%); /* Deeper purple gradient */
+  color: #fff;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+header:before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: -30%;
+  width: 160%;
+  height: 160%;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: rotate(20deg);
+  pointer-events: none; /* Ensure it doesn't interfere with clicks */
+}
+
+#logo {
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+#logo img {
+  max-width: 160px; /* Slightly larger logo */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 8px;
+}
+
+#company {
+  text-align: right; /* Align company info to the right */
+  margin-left: auto; /* Push to the right */
+}
+
+#company h2.name {
+  font-size: 2.2em; /* Larger company name */
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+#company div,
+#company a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95em;
+  margin-top: 4px;
+}
+
+main {
+  padding: 0 10px; /* Add some horizontal padding to main content */
+}
+
+#details {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 20px; /* Gap between client and invoice sections */
+}
+
+#client,
+#invoice {
+  flex: 1; /* Allow sections to grow */
+  min-width: 300px; /* Minimum width before wrapping */
+  padding: 25px;
+  border-radius: 10px;
+}
+
+#client {
+  background-color: #e6f7ff; /* Light blue background */
+  border-left: 6px solid #007bff; /* Blue border */
+  color: #0056b3;
+}
+
+#client .to {
+  color: #555;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#client h2.name {
+  color: #007bff;
+  font-size: 2em;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+#client div,
+#client a {
+  color: #333;
+  font-size: 1em;
+  margin-top: 4px;
+}
+
+#invoice {
+  background-color: #fff0f5; /* Light pink background */
+  border-right: 6px solid #dc3545; /* Red border */
+  text-align: right;
+  color: #a71d2a;
+}
+
+#invoice h1 {
+  color: #dc3545;
+  font-size: 3.5em; /* Larger invoice number */
+  line-height: 1em;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+#invoice .date {
+  font-size: 0.95em;
+  color: #555;
+  margin-top: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+table th,
+table td {
+  padding: 18px; /* More padding in table cells */
+  text-align: center;
+  border-bottom: 1px solid #e9ecef; /* Lighter border */
+}
+
+table th {
+  background-color: #f1f3f5; /* Light grey header */
+  color: #495057;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.95em;
+  letter-spacing: 0.5px;
+}
+
+table tbody tr:hover {
+  background-color: #f6f6f6; /* Subtle hover effect */
+}
+
+table td {
+  color: #495057;
+}
+
+table td.no {
+  color: #fff;
+  background: linear-gradient(90deg, #007bff 0%, #0056b3 100%); /* Blue gradient for item number */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+table td.desc {
+  text-align: left;
+}
+
+table td.desc h3 {
+  margin: 0;
+  font-size: 1.15em;
+  color: #343a40;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+table td.desc p {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin: 0;
+}
+
+table td.unit,
+table td.qty,
+table td.total {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+table tfoot td {
+  padding: 15px 20px;
+  background-color: #f1f3f5;
+  font-weight: bold;
+  color: #343a40;
+  font-size: 1.15em;
+  border-top: 2px solid #dee2e6;
+}
+
+table tfoot tr:last-child td {
+  color: #fff;
+  background: linear-gradient(90deg, #dc3545 0%, #a71d2a 100%); /* Red gradient for payable amount */
+  font-size: 1.4em;
+  border-top: 2px solid #dc3545;
+  font-weight: 700;
+}
+
+#thanks {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 1.8em; /* Larger thank you message */
+  color: #28a745; /* Green color */
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+}
+
+#notices {
+  margin-top: 50px;
+  padding: 25px;
+  background-color: #fff3e0; /* Light orange background */
+  border-left: 6px solid #ff9800; /* Orange border */
+  border-radius: 10px;
+  color: #e65100;
+}
+
+#notices div {
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+}
+
+#notices .notice {
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 25px;
+  color: #868e96;
+  font-size: 0.85em;
+  border-top: 1px solid #e9ecef;
+  background-color: #f1f3f5;
+  border-radius: 0 0 12px 12px; /* Match wrap border radius */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  #invoice-wrap {
+    padding: 20px;
+    margin: 15px auto;
+  }
+
+  header {
+    flex-direction: column; /* Stack logo and company info */
+    text-align: center;
+    padding: 20px;
+  }
+
+  #company {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  #details {
+    flex-direction: column; /* Stack client and invoice details */
+    gap: 15px;
+  }
+
+  #client,
+  #invoice {
+    min-width: unset; /* Remove min-width for stacking */
+    width: 100%;
+    text-align: left; /* Align invoice details left on small screens */
+  }
+
+  #invoice h1 {
+    font-size: 2.5em;
+  }
+
+  table th,
+  table td {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
+  table td.desc h3 {
+    font-size: 1em;
+  }
+
+  table tfoot td {
+    font-size: 1em;
+  }
+
+  table tfoot tr:last-child td {
+    font-size: 1.2em;
+  }
+}
+
+@media print {
+  body {
+    background-color: #fff;
+    padding: 0;
+  }
+
+  #invoice-wrap {
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  header, #client, #invoice, table td.no, table tfoot tr:last-child td {
+    background: none !important; /* Remove gradients for print */
+    background-color: #f0f2f5 !important; /* Fallback solid color */
+    -webkit-print-color-adjust: exact; /* Ensure colors are printed */
+    color-adjust: exact;
+  }
+
+  header {
+    color: #333 !important;
+  }
+  #company div, #company a {
+    color: #555 !important;
+  }
+  #client h2.name, #client div, #client a {
+    color: #333 !important;
+  }
+  #invoice h1, #invoice .date {
+    color: #333 !important;
+  }
+  table td.no {
+    color: #333 !important;
+  }
+  table tfoot tr:last-child td {
+    color: #333 !important;
+  }
+
+  header:before {
+    display: none;
+  }
+}
+@media print {
+    html, body {
+      font-size: 11px !important; /* Smaller base for better fit */
+      line-height: 1.3 !important;
+      zoom: 0.85; /* Shrinks entire layout slightly */
+      background-color: #fff;
+      padding: 0;
+    }
+  
+    #invoice-wrap {
+      padding: 10px !important;
+      margin: 0 auto !important;
+      max-width: 100% !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+  
+    header {
+      padding: 15px 20px !important;
+      margin-bottom: 20px !important;
+    }
+  
+    header h2.name {
+      font-size: 1.6em !important;
+    }
+  
+    #company div, #company a {
+      font-size: 0.85em !important;
+    }
+  
+    #client, #invoice {
+      padding: 15px !important;
+      font-size: 0.95em !important;
+    }
+  
+    #client h2.name, #invoice h1 {
+      font-size: 1.8em !important;
+      margin-bottom: 8px !important;
+    }
+  
+    #invoice .date {
+      font-size: 0.85em !important;
+    }
+  
+    table th, table td {
+      padding: 10px 8px !important;
+      font-size: 0.85em !important;
+    }
+  
+    table td.desc h3 {
+      font-size: 1em !important;
+      margin-bottom: 3px !important;
+    }
+  
+    table td.desc p {
+      font-size: 0.8em !important;
+    }
+  
+    table tfoot td {
+      font-size: 0.95em !important;
+      padding: 10px 15px !important;
+    }
+  
+    table tfoot tr:last-child td {
+      font-size: 1.1em !important;
+    }
+  
+    #thanks {
+      font-size: 1.4em !important;
+      margin: 30px 0 !important;
+    }
+  
+    #notices {
+      padding: 15px !important;
+      font-size: 0.9em !important;
+      margin-top: 30px !important;
+    }
+  
+    footer {
+      padding: 15px !important;
+      font-size: 0.75em !important;
+      margin-top: 30px !important;
+    }
+  
+    // /* Remove gradients and adjust colors for printer-friendliness */
+    // header, #client, #invoice, table td.no, table tfoot tr:last-child td {
+    //   background: none !important;
+    //   background-color: #f0f2f5 !important;
+    //   color: #333 !important;
+    //   -webkit-print-color-adjust: exact;
+    //   color-adjust: exact;
+    // }
+  
+    // header:before {
+    //   display: none !important;
+    // }
+  }
+  
+  

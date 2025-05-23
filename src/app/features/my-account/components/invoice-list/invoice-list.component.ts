@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { InvoicePreviewComponent } from 'src/app/features/invoice/components/invoice-preview/invoice-preview.component';
 import { InvoiceService } from 'src/app/features/invoice/services/invoice.service';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-invoice-list',
   templateUrl: './invoice-list.component.html',
@@ -12,7 +13,7 @@ export class InvoiceListComponent implements OnInit {
   invoices: any[] = []; // Array to store invoices
   errorMessage: string | null = null; // To handle errors
 
-  constructor(private invoiceService: InvoiceService, public dialog: MatDialog) { }
+  constructor(private invoiceService: InvoiceService, public dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.loadInvoices(); // Load invoices when the component initializes
@@ -50,34 +51,24 @@ export class InvoiceListComponent implements OnInit {
     });
   }
 
-  // Download an invoice as a PDF
-  downloadInvoice(invoice: any): void {
-    // this.invoiceService.downloadInvoice(invoice._id).subscribe({
-    //   next: (response: Blob) => {
-    //     const blob = new Blob([response], { type: 'application/pdf' });
-    //     saveAs(blob, `invoice_${invoice.invoiceNumber}.pdf`);
-    //   },
-    //   error: (error) => {
-    //     this.errorMessage = `Failed to download invoice ${invoice.invoiceNumber}.`;
-    //     console.error('Error downloading invoice:', error);
-    //   }
-    // });
-  }
+
 
   // Delete an invoice
   deleteInvoice(invoiceId: string): void {
-    // if (confirm('Are you sure you want to delete this invoice?')) {
-    //   this.invoiceService.deleteInvoice(invoiceId).subscribe({
-    //     next: () => {
-    //       this.invoices = this.invoices.filter((invoice) => invoice._id !== invoiceId);
-    //       console.log('Invoice deleted:', invoiceId);
-    //     },
-    //     error: (error) => {
-    //       this.errorMessage = 'Failed to delete invoice.';
-    //       console.error('Error deleting invoice:', error);
-    //     }
-    //   });
-    // }
+    if (confirm('Are you sure you want to delete this invoice?')) {
+      this.invoiceService.deleteInvoice(invoiceId).subscribe({
+        next: () => {
+          this.invoices = this.invoices.filter((invoice) => invoice._id !== invoiceId);
+          this.toastr.success('Invoice deleted successfully!');
+          console.log('Invoice deleted:', invoiceId);
+        },
+        error: (error) => {
+          this.errorMessage = 'Failed to delete invoice.';
+          console.error('Error deleting invoice:', error);
+          this.toastr.error('Failed to delete invoice.');
+        }
+      });
+    }
   }
 
   openDialog(invoiceData: any) {
@@ -92,4 +83,21 @@ export class InvoiceListComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  updateInvoiceStatus(invoice: any): void {
+    this.invoiceService.updateInvoiceStatus(invoice._id, invoice.status).subscribe({
+      next: (updated: any) => {
+        this.toastr.success('Status updated successfully!');
+      },
+      error: (error) => {
+        this.errorMessage = `Failed to update status for invoice ${invoice.invoiceNumber}`;
+        console.error('Error updating invoice status:', error);
+        this.toastr.error('Failed to update status for invoice.');
+      }
+    });
+  }
+
+
+
+
 }

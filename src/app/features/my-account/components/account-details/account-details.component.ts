@@ -21,9 +21,9 @@ export class AccountDetailsComponent implements OnInit {
   ngOnInit(): void {
     // Initialize the form with validation
     this.profileForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // 10 digit mobile number
+      name: ['', Validators.required],
+      // lastName: ['', Validators.required],
+      // phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]], // 10 digit mobile number
       email: ['', [Validators.required, Validators.email]],
     });
 
@@ -33,43 +33,41 @@ export class AccountDetailsComponent implements OnInit {
 
   // Fetch the user's profile data and populate the form
   loadUserProfile() {
-    // this.myAccountService.getProfile().subscribe(
-    //   (user) => {
-    //     this.authService.saveUser(user);
-    //     this.profileForm.patchValue({
-    //       firstName: user?.user?.firstName,
-    //       lastName: user?.user?.lastName,
-    //       phoneNumber: user?.user?.phoneNumber,
-    //       email: user?.user?.email,
-    //     });
-    //     this.isLoading = false;
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching profile:', error);
-    //     this.toastr.error('Error loading profile.');
-    //     this.isLoading = false;
-    //   }
-    // );
+    this.authService.getUserProfile().subscribe(
+      (user) => {
+        this.authService.saveUser(user);
+        this.profileForm.patchValue({
+          name: user?.name,
+          email: user?.email,
+        });
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error('Error fetching profile:', error);
+        this.toastr.error('Error loading profile.');
+        this.isLoading = false;
+      }
+    );
   }
 
   // Update user profile
   updateProfile() {
-    // if (this.profileForm.invalid) {
-    //   return;
-    // }
+    if (this.profileForm.invalid) {
+      return;
+    }
 
-    // const updatedProfile = this.profileForm.value;
+    const updatedProfile = this.profileForm.value;
 
-    // this.myAccountService.updateProfile(updatedProfile).subscribe(
-    //   (response) => {
-    //     this.loadUserProfile();
-    //     this.toastr.success('Profile updated successfully!');
-    //   },
-    //   (error) => {
-    //     console.error('Error updating profile:', error);
-    //     this.toastr.error(error?.error?.message || 'Error updating profile.');
-    //   }
-    // );
+    this.authService.updateUserProfile(updatedProfile).subscribe(
+      (response) => {
+        this.loadUserProfile();
+        this.toastr.success('Profile updated successfully!');
+      },
+      (error) => {
+        console.error('Error updating profile:', error);
+        this.toastr.error(error?.error?.message || 'Error updating profile.');
+      }
+    );
   }
 
   // Convenience getter for easy access to form fields

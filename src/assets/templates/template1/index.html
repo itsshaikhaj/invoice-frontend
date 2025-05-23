@@ -77,20 +77,6 @@
   </footer>
 </body>
 
-<script>
-  // Inside the iframe template (JavaScript)
-  window.addEventListener('message', function (event) {
-    // Assuming the data comes from the parent (form data)
-    const data = event.data;
 
-    if (data) {
-      document.getElementById('customerName').textContent = data.customerName;
-      document.getElementById('customerEmail').textContent = data.customerEmail;
-      document.getElementById('invoiceNumber').textContent = data.invoiceNumber;
-      // Update other fields similarly...
-    }
-  });
-
-</script>
 
 </html>
